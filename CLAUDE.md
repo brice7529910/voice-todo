@@ -13,7 +13,7 @@ Réponses : courtes, directes, en français, sans intro ni conclusion. Ne pas va
 ## Structure
 - `src/` : data.js, art.js (SVG), engine.js, style.css, assemble.sh.
 - **Build unique : `npm run build`** (= `sh scripts/build.sh`) → `la_derniere_peche.html`, `pwa/index.html` (généré, ne plus éditer à la main), `www/` (webDir Capacitor, non versionné).
-- `pwa/` : manifest, sw.js (cache `derniere-peche-v2.4`, à incrémenter à chaque release), icônes.
+- `pwa/` : manifest, sw.js (cache `derniere-peche-v2.5`, à incrémenter à chaque release), icônes.
 - `native/native.js` : colle appli (bouton retour Android → `ACT.back()`, coupe ambiance/voix en arrière-plan). Injecté seulement dans `www/`.
 - `android/`, `ios/` : projets Capacitor 8 (appId `fr.dernierepeche.jeu`, portrait). iOS en Swift Package Manager (pas de CocoaPods).
 - `assets/` : sources icône/splash → `npx capacitor-assets generate --android --ios`.

@@ -52,3 +52,12 @@ Lecture : un joueur qui va droit au but finit en moins d'une heure. Un joueur m�
 - La lisibilité de la photo des trois différences sur petit écran (cercles tactiles de 26 px) : à confirmer avec de vrais doigts.
 - Le calibrage des énigmes optionnelles (coffre, chiffre) : à tester sur des joueurs.
 - Antériorité du titre « La Dernière Pêche » et des noms (Armor-Pêche, Rivoal) : à vérifier avant commercialisation.
+
+## 6. Correctif v2.1 — coupable trop visible (retour testeur)
+
+Retour : « on sait qui est coupable en lisant les dossiers ». Causes et corrections :
+- Tableau de déduction : C3 « Le gant est celui d'Odile Quéré » et C4 « Odile avait un mobile… » visibles dès le début → titres neutres (« Le lambeau de gant désigne son propriétaire », « Le coupable avait un mobile et un rendez-vous »).
+- Fiche suspect d'Odile : « Tailleur beige » (= lambeau beige) → tailleur gris, portrait gris. Mobile affiché « gère la caisse de prévoyance » → « aucun connu » (le lien avec la prévoyance arrive par l'interrogatoire et I06).
+- Aide : « sa version est la première à vérifier » et « manteau n°14 (Me Quéré) » → formulations sans nom.
+QA relancée : résultats identiques (A 3★, complet 20/20, erreurs D/C/B/Bsol/A, aide seule A 1★, 0 anomalie).
+Reste à tester : un joueur neuf soupçonne-t-il encore Odile trop tôt ? Si oui, renforcer une fausse piste (Mathilde : écritures de sa main sur I06).

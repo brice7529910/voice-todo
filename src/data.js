@@ -1,6 +1,6 @@
 /* ===== AFFAIRE : « La Dernière Pêche » — toutes les données de l'enquête ===== */
 const AFFAIRE = {
-id: 'derniere-peche', titre: 'La Dernière Pêche', version: '2.0',
+id: 'derniere-peche', titre: 'La Dernière Pêche', version: '2.1',
 fausses: ['I04','I05','I07'],
 briefing: [
 `Dimanche 15 novembre 1987, 01h15. Douarnenez, Finistère. Au fond du Port-Rhu, la conserverie Morvan fait face à l'île Tristan.`,
@@ -150,9 +150,9 @@ lucien:{nom:'Lucien Morvan',role:'Fils de la victime, directeur de l\'usine, 34 
  },
  defaut:`Il hausse les épaules. Il n'a rien à ajouter.`},
 
-odile:{nom:'Me Odile Quéré',role:'Notaire, 45 ans',lieu:'salle',look:{peau:'#ecd3bb',cheveux:'#5b3a2a',style:'carre',tenue:'#7a6a55',accent:'#b9955a'},
- pub:`Mobile apparent : gère la vente et la caisse de prévoyance des ouvriers.`,
- intro:`Tailleur beige, tenue irréprochable. Elle ajuste ses manchettes.`,
+odile:{nom:'Me Odile Quéré',role:'Notaire, 45 ans',lieu:'salle',look:{peau:'#ecd3bb',cheveux:'#5b3a2a',style:'carre',tenue:'#5d6168',accent:'#b9955a'},
+ pub:`Mobile apparent : aucun connu. Notaire de la famille, elle prépare la signature de la vente lundi.`,
+ intro:`Tailleur gris, tenue irréprochable. Elle ajuste ses manchettes.`,
  p1:[
  {id:'1',q:`Où étiez-vous entre 20h45 et 21h10 ?`,r:`Dans la salle, avec l'adjoint au maire. Sauf cinq minutes aux toilettes dames. Vous n'imaginez pas le monde qu'il y avait.`,note:`Dit ne pas avoir quitté la salle, sauf 5 minutes aux toilettes.`},
  {id:'2',q:`Quels étaient vos liens avec Gaspard ?`,r:`Je suis son notaire depuis quinze ans. Mon étude est à Tréboul. Je m'occupe de la vente et de la caisse de prévoyance des ouvriers. Un client. Presque un ami.`},
@@ -349,8 +349,8 @@ pistes: [
 conclusions: [
 {id:'C1',titre:`Il est mort avant 21h05`,requis:['I01','I10'],bonus:['I14','I13','I16','I17'],sens:`Le corps était déjà dans la cour quand la pluie a commencé.`},
 {id:'C2',titre:`L'heure de la montre est fausse et voulue`,requis:['I02','I12'],bonus:['I10','I01','I14','I16'],sens:`Heure réglée à la main sur celle de la photo du toast.`},
-{id:'C3',titre:`Le gant est celui d'Odile Quéré`,requis:['I03','I11'],bonus:['I12','I17','I20'],sens:`Lambeau, gant gauche, manteau sorti : un seul gant correspond.`},
-{id:'C4',titre:`Odile avait un mobile et un rendez-vous`,requis:['I06','I08'],bonus:['I19'],sens:`Compte vidé, lettre de banque, rendez-vous à 20h50 sur l'escalier.`}
+{id:'C3',titre:`Le lambeau de gant désigne son propriétaire`,requis:['I03','I11'],bonus:['I12','I17','I20'],sens:`Lambeau, gant gauche, manteau sorti : un seul gant correspond.`},
+{id:'C4',titre:`Le coupable avait un mobile et un rendez-vous`,requis:['I06','I08'],bonus:['I19'],sens:`Compte vidé, lettre de banque, rendez-vous à 20h50 sur l'escalier.`}
 ],
 
 confrontation: [
@@ -369,14 +369,14 @@ aide: [
 {manque:'i:I08',piste:`L'agenda du bureau.`,coup:`Examinez l'agenda de Gaspard, dans le bureau.`,rev:`Conclusion C4 : un rendez-vous. Indice : l'agenda, dans le bureau.`},
 {manque:'i:I06',piste:`Le courrier du bureau.`,coup:`Examinez la lettre de la banque, dans le bureau.`,rev:`Conclusion C4 : un mobile. Indice : la lettre de la banque, dans le bureau.`},
 {manque:'i:I07',piste:`Le tiroir du bureau.`,coup:`Examinez le tiroir du bureau.`,rev:`Indice de contexte : une reconnaissance de dette, dans le tiroir du bureau.`},
-{manque:'t:odile',piste:`Interrogez Me Quéré, dans la salle des fêtes.`,coup:`Posez vos questions à Me Quéré, dans la salle des fêtes.`,rev:`Interrogez Me Quéré, la notaire : sa version est la première à vérifier.`},
+{manque:'t:odile',piste:`Interrogez Me Quéré, dans la salle des fêtes.`,coup:`Posez vos questions à Me Quéré, dans la salle des fêtes.`,rev:`Interrogez Me Quéré, la notaire : elle était à la table de Gaspard toute la soirée.`},
 {manque:'t:solange',piste:`Interrogez Mme Morvan.`,coup:`Posez vos questions à Mme Morvan.`,rev:`Interrogez Mme Morvan dans la salle des fêtes.`},
 {manque:'t:lucien',piste:`Interrogez Lucien.`,coup:`Posez vos questions à Lucien.`,rev:`Interrogez Lucien Morvan dans la salle des fêtes.`},
 {manque:'t:yann',piste:`Interrogez Yann.`,coup:`Posez vos questions à Yann.`,rev:`Interrogez Yann Kerbrat dans la salle des fêtes.`},
 {manque:'t:mathilde',piste:`Interrogez Mathilde.`,coup:`Posez vos questions à Mathilde.`,rev:`Interrogez Mathilde Rouat dans la salle des fêtes.`},
 {manque:'t:salaun',piste:`Interrogez le Dr Salaün.`,coup:`Posez vos questions au Dr Salaün.`,rev:`Interrogez le Dr Salaün dans la salle des fêtes.`},
 {manque:'i:I12',piste:`Quelqu'un a pris des photos ce soir.`,coup:`Parlez à Gwenn, la photographe, dans la salle des fêtes.`,rev:`Conclusion C2 : indice dans le carnet de la photographe, dans la salle des fêtes.`},
-{manque:'i:I11',piste:`Le vestiaire garde des traces.`,coup:`Examinez le manteau n°14, au vestiaire.`,rev:`Conclusion C3 : indice dans le manteau n°14 (Me Quéré), au vestiaire.`},
+{manque:'i:I11',piste:`Le vestiaire garde des traces.`,coup:`Examinez le manteau n°14, au vestiaire.`,rev:`Conclusion C3 : indice dans un manteau du vestiaire. Le registre de Jeanne dit qui est sorti.`},
 {manque:'i:I10',piste:`À quelle heure a-t-il plu ?`,coup:`Interrogez Jeanne, au vestiaire, sur la pluie.`,rev:`Conclusion C1 : indice sur la pluie (Jeanne ou le cahier météo de la chaufferie).`},
 {manque:'i:I13',piste:`Vérifiez Lucien et Yann à la chaufferie.`,coup:`Examinez le journal du compresseur, à la chaufferie.`,rev:`Alibi de Lucien et de Yann : le journal du compresseur, à la chaufferie.`},
 {manque:'i:I04',piste:`La chaufferie cache aussi des secrets de Yann.`,coup:`Examinez les caisses et le cahier de rondes, à la chaufferie.`,rev:`Fausse piste sur Yann : les caisses hors stock, à la chaufferie.`},
