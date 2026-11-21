@@ -25,7 +25,7 @@ function jouerFichier(nom: string, volume = 1) {
   } catch {}
 }
 
-export function effet(s: Son, actif: boolean) { if (actif) jouerFichier(s, 0.8); }
+export function effet(s: Son, actif: boolean) { if (actif) jouerFichier(s, 0.45); } // discrets : l'interface ne doit pas couvrir la cassette
 
 export function parler(txt: string, pitch = 1, actif = true) {
   if (!actif || !txt) return;
@@ -42,14 +42,14 @@ export function segment(seg: any, voix: boolean) {
 
 /* Ambiance : mer en boucle + mouettes aléatoires. */
 let mer: AudioPlayer | null = null, timer: ReturnType<typeof setTimeout> | null = null, niveau = 1;
-function mouette() { if (!mer) return; if (niveau > 0) jouerFichier('mouette', 0.5 * niveau); timer = setTimeout(mouette, 8000 + Math.random() * 9000); }
+function mouette() { if (!mer) return; if (niveau > 0) jouerFichier('mouette', 0.3 * niveau); timer = setTimeout(mouette, 8000 + Math.random() * 9000); }
 export function ambiance(on: boolean) {
   if (on && !mer) {
-    try { init(); mer = createAudioPlayer(SRC.mer); mer.loop = true; mer.volume = 0.6 * niveau; mer.play(); timer = setTimeout(mouette, 4000); } catch { mer = null; }
+    try { init(); mer = createAudioPlayer(SRC.mer); mer.loop = true; mer.volume = 0.35 * niveau; mer.play(); timer = setTimeout(mouette, 4000); } catch { mer = null; }
   } else if (!on && mer) {
     try { mer.pause(); mer.remove(); } catch {}
     mer = null; if (timer) clearTimeout(timer); timer = null;
   }
 }
 /** Baisse l'ambiance pendant la cassette (0) et la remet ensuite (1). */
-export function ambianceNiveau(v: number) { niveau = v; if (mer) try { mer.volume = 0.6 * v; } catch {} }
+export function ambianceNiveau(v: number) { niveau = v; if (mer) try { mer.volume = 0.35 * v; } catch {} }
