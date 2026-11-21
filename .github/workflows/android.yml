@@ -1,33 +1,42 @@
-name: APK Android (debug)
+name: APK Android (React Native)
 
 on:
   push:
     branches: ['**']
-    paths: ['src/**', 'native/**', 'scripts/**', 'android/**', 'assets/**', 'capacitor.config.json', 'package*.json', '.github/workflows/android.yml']
+    paths: ['src/**', 'mobile/**', '.github/workflows/android.yml']
   workflow_dispatch:
 
 jobs:
   apk:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: mobile
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: mobile/package-lock.json
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: 21
-      - run: npm ci
-      - name: Build web + sync Capacitor
-        run: sh scripts/build.sh && npx cap sync android
-      - name: Gradle assembleDebug
-        working-directory: android
-        run: chmod +x gradlew && ./gradlew assembleDebug --no-daemon
+          java-version: 17
+      - name: Dépendances (synchronise aussi src/data.js et src/art.js)
+        run: npm ci
+      - name: Tests du moteur
+        run: npm test
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Projet Android natif
+        run: npx expo prebuild --platform android --no-install
+      - name: Compilation APK (release, signée avec la clé de debug)
+        working-directory: mobile/android
+        run: ./gradlew assembleRelease --no-daemon
       - uses: actions/upload-artifact@v4
         with:
-          name: la-derniere-peche-debug-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: la-derniere-peche-apk
+          path: mobile/android/app/build/outputs/apk/release/app-release.apk
           retention-days: 30

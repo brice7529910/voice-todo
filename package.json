@@ -1,24 +1,11 @@
 {
   "name": "la-derniere-peche",
-  "version": "2.5.0",
+  "version": "2.1.0",
   "private": true,
   "description": "Jeu d'enquête — Douarnenez, 15 novembre 1987.",
   "scripts": {
     "build": "sh scripts/build.sh",
     "test": "node tests/qa2.js",
-    "cap:sync": "sh scripts/build.sh && npx cap sync",
-    "android": "sh scripts/build.sh && npx cap sync android && npx cap open android",
-    "ios": "sh scripts/build.sh && npx cap sync ios && npx cap open ios",
-    "apk": "sh scripts/build.sh && npx cap sync android && cd android && ./gradlew assembleDebug"
-  },
-  "dependencies": {
-    "@capacitor/android": "^8.6.2",
-    "@capacitor/app": "^8.1.2",
-    "@capacitor/core": "^8.6.2",
-    "@capacitor/ios": "^8.6.2"
-  },
-  "devDependencies": {
-    "@capacitor/assets": "^4.0.0",
-    "@capacitor/cli": "^8.6.2"
+    "mobile:test": "cd mobile && npm test"
   }
 }

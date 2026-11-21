@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "La Dernière Pêche",
+    "slug": "la-derniere-peche",
+    "version": "2.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0f1b2d",
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f1b2d"
+    },
+    "ios": {
+      "bundleIdentifier": "fr.dernierepeche.jeu",
+      "buildNumber": "1",
+      "supportsTablet": true,
+      "infoPlist": { "ITSAppUsesNonExemptEncryption": false }
+    },
+    "android": {
+      "package": "fr.dernierepeche.jeu",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#0f1b2d",
+        "foregroundImage": "./assets/images/icon-foreground.png",
+        "monochromeImage": "./assets/images/icon-monochrome.png"
+      },
+      "permissions": [],
+      "blockedPermissions": ["android.permission.RECORD_AUDIO"],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      ["expo-audio", { "microphonePermission": false, "recordAudioAndroid": false }],
+      "expo-asset"
+    ]
+  }
+}
