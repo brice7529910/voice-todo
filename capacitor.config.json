@@ -1,0 +1,8 @@
+{
+  "appId": "fr.dernierepeche.jeu",
+  "appName": "La Dernière Pêche",
+  "webDir": "www",
+  "backgroundColor": "#0f1b2d",
+  "android": { "backgroundColor": "#0f1b2d" },
+  "ios": { "backgroundColor": "#0f1b2d", "contentInset": "never" }
+}

@@ -1,0 +1,34 @@
+name: APK Android (debug)
+
+on:
+  push:
+    branches: ['**']
+    paths: ['src/**', 'native/**', 'scripts/**', 'android/**', 'assets/**', 'capacitor.config.json', 'package*.json', '.github/workflows/android.yml']
+  workflow_dispatch:
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: android-actions/setup-android@v3
+      - run: npm ci
+      - name: Build web + sync Capacitor
+        run: sh scripts/build.sh && npx cap sync android
+      - name: Gradle assembleDebug
+        working-directory: android
+        run: chmod +x gradlew && ./gradlew assembleDebug --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: la-derniere-peche-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30
